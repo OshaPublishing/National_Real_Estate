@@ -1,16 +1,435 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Exam Simulator</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Real Estate License Exam Mastery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&q=80') center/cover;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: #1a365d;
+            font-weight: 700;
+        }
+
+        .education-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px;
+        }
+
+        .education-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .education-section h2 {
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .info-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .review-section {
+            background: #f7fafc;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .review-copy {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #2d3748;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 18px 45px;
+            background: #e53e3e;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(229, 62, 62, 0.3);
+        }
+
+        .btn:hover {
+            background: #c53030;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(229, 62, 62, 0.4);
+        }
+
+        .btn-secondary {
+            background: #3182ce;
+            box-shadow: 0 4px 15px rgba(49, 130, 206, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: #2c5282;
+            box-shadow: 0 6px 20px rgba(49, 130, 206, 0.4);
+        }
+
+        .bonus-section {
+            background: url('https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1600&q=80') center/cover;
+            background-attachment: fixed;
+            padding: 80px 20px;
+            position: relative;
+        }
+
+        .bonus-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .bonus-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .bonus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 50px 0;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .bonus-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-top: 5px solid #3182ce;
+        }
+
+        .bonus-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .bonus-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .bonus-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #1a365d;
+        }
+
+        .bonus-card ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .bonus-card li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .bonus-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #48bb78;
+            font-weight: 700;
+        }
+
+        .value-section {
+            background: #1a365d;
+            color: white;
+            padding: 80px 20px;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .value-item h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
-<body class="min-h-screen flex items-center justify-center">
-  <main class="p-6 rounded-xl shadow text-center">
-    <h1 class="text-2xl font-bold mb-4">It works ✅</h1>
-    <p class="mb-4">Questa è la landing principale.</p>
-    <p><a class="underline" href="./b/libro-esempio/">Vai alla Landing 1 del libro</a></p>
-  </main>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>National Real Estate License Exam Mastery</h1>
+            <p>Your Complete Guide to Passing the Exam with Confidence</p>
+        </div>
+    </div>
+
+    <div class="education-section">
+        <div class="education-content">
+            <h2 class="section-title">Understanding the National Real Estate License Exam</h2>
+            <p style="font-size: 1.15rem; margin-bottom: 30px; text-align: center;">
+                The National Real Estate License Exam is a crucial step in launching your real estate career. 
+                This comprehensive examination tests your knowledge of federal real estate laws, ethical practices, 
+                and fundamental real estate principles that apply across all states.
+            </p>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Exam Format</h3>
+                    <p>The national portion typically consists of 80-100 multiple-choice questions covering contracts, property ownership, and federal regulations.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Passing Score</h3>
+                    <p>Most states require a score of 70% or higher on the national portion to qualify for licensure.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Time Limit</h3>
+                    <p>Candidates are generally given 3.5 to 4 hours to complete both the national and state-specific portions of the exam.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="review-section">
+        <div class="container">
+            <h2 class="section-title">Your Success Story Matters</h2>
+            <div class="review-copy">
+                <p>
+                    <strong>Congratulations on taking the first step toward your real estate license!</strong> 
+                    Your journey and insights are invaluable to future real estate professionals. By sharing your 
+                    experience with this book, you're helping others make informed decisions about their exam preparation. 
+                    Your honest review takes just 2 minutes but can make a lifetime difference for someone starting their career.
+                </p>
+                <p style="margin-top: 20px; font-style: italic; color: #4a5568;">
+                    Every review helps us improve and supports fellow aspiring real estate agents in their journey to success.
+                </p>
+            </div>
+            <a href="#" class="btn">Leave Your Review Now</a>
+        </div>
+    </div>
+
+    <div class="bonus-section">
+        <div class="bonus-content">
+            <div class="container">
+                <h2 class="section-title">Exclusive Bonus Resources</h2>
+                <p style="text-align: center; font-size: 1.2rem; margin-bottom: 20px; color: #2d3748;">
+                    As a valued reader, you get instant access to premium study tools designed to accelerate your success
+                </p>
+
+                <div class="bonus-grid">
+                    <div class="bonus-card">
+                        <div class="bonus-number">1</div>
+                        <h3>Online Practice Test Platform</h3>
+                        <p>Access our advanced simulation platform that mirrors the real exam environment:</p>
+                        <ul>
+                            <li>50-question practice test (1-hour timed mode)</li>
+                            <li>100-question comprehensive exam (2.5-hour timed mode)</li>
+                            <li>Instant scoring and detailed answer explanations</li>
+                            <li>Track your progress and identify weak areas</li>
+                            <li>Unlimited practice attempts</li>
+                        </ul>
+                    </div>
+
+                    <div class="bonus-card">
+                        <div class="bonus-number">2</div>
+                        <h3>Complete Audiobook</h3>
+                        <p>Study smarter with the full audiobook version:</p>
+                        <ul>
+                            <li>Listen anywhere, anytime - during commutes, workouts, or breaks</li>
+                            <li>Professional narration for better retention</li>
+                            <li>Perfect for auditory learners</li>
+                            <li>Complement your reading with audio reinforcement</li>
+                            <li>Download for offline access</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="cta-section">
+                    <a href="#" class="btn btn-secondary">Click Here to Access Your Bonuses</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="value-section">
+        <div class="container">
+            <h2 class="section-title">Why This Resource Changes Everything</h2>
+            
+            <div class="value-grid">
+                <div class="value-item">
+                    <div class="value-icon">🎯</div>
+                    <h3>Proven Success Rate</h3>
+                    <p>Our comprehensive approach has helped thousands of students pass their exam on the first attempt. The combination of expert content, practice tests, and audio learning creates a multi-sensory study experience that maximizes retention.</p>
+                </div>
+
+                <div class="value-item">
+                    <div class="value-icon">⏱️</div>
+                    <h3>Save Valuable Time</h3>
+                    <p>Stop wasting time on scattered resources. Everything you need is organized in one place, allowing you to focus on learning rather than searching. Our structured approach cuts study time by up to 40% compared to traditional methods.</p>
+                </div>
+
+                <div class="value-item">
+                    <div class="value-icon">💡</div>
+                    <h3>Real-World Application</h3>
+                    <p>Beyond passing the exam, you'll gain practical knowledge that prepares you for actual real estate transactions. Our content bridges the gap between theory and practice, giving you confidence from day one of your career.</p>
+                </div>
+
+                <div class="value-item">
+                    <div class="value-icon">📈</div>
+                    <h3>Continuous Improvement</h3>
+                    <p>With unlimited access to practice tests, you can track your progress over time. Watch your scores improve as you identify and strengthen weak areas. The platform adapts to your learning pace and needs.</p>
+                </div>
+
+                <div class="value-item">
+                    <div class="value-icon">🔒</div>
+                    <h3>Exam-Day Confidence</h3>
+                    <p>Walk into your exam with the confidence that comes from thorough preparation. Our realistic practice environment eliminates surprises and reduces test anxiety, ensuring you perform at your best when it matters most.</p>
+                </div>
+
+                <div class="value-item">
+                    <div class="value-icon">🚀</div>
+                    <h3>Launch Your Career Faster</h3>
+                    <p>Every day without your license is a day of missed opportunities. Our accelerated study system gets you licensed faster, so you can start earning commissions and building your real estate business sooner.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 60px;">
+                <p style="font-size: 1.3rem; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    Your real estate career starts here. With the right tools and dedication, you're not just preparing for an exam—you're building the foundation for a successful, rewarding profession that can change your life.
+                </p>
+                <a href="#" class="btn">Access All Your Resources Now</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('a[href="#"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert('This is a demo. In production, this would link to your review page or bonus access portal.');
+            });
+        });
+    </script>
 </body>
 </html>
