@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Real Estate Exam Flashcards — CertPath Publications</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════
+   CERTPATH PUBLICATIONS — REAL ESTATE FLASHCARDS
+   Aesthetic: White, editorial, luxury publishing
+   ═══════════════════════════════════════════════════ */
+
+:root {
+  --white: #ffffff;
+  --snow: #fafbfc;
+  --pearl: #f3f4f6;
+  --silver: #e5e7eb;
+  --mist: #d1d5db;
+  --slate: #9ca3af;
+  --graphite: #6b7280;
+  --charcoal: #374151;
+  --ink: #1f2937;
+  --obsidian: #111827;
+  --navy: #1e3a5f;
+  --navy-deep: #0f2440;
+  --gold: #b8860b;
+  --gold-light: #d4a843;
+  --gold-soft: rgba(184,134,11,0.08);
+  --gold-border: rgba(184,134,11,0.18);
+  --accent-blue: #2563eb;
+  --radius: 4px;
+  --radius-lg: 8px;
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 12px 48px rgba(0,0,0,0.06);
+  --shadow-card-hover: 0 1px 3px rgba(0,0,0,0.08), 0 20px 60px rgba(0,0,0,0.1);
+  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-body: 'Source Sans 3', 'Helvetica Neue', Helvetica, sans-serif;
+  --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+*, *::before, *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+
+html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--snow);
+  color: var(--ink);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ─── CITYSCAPE SVG BACKGROUND ─── */
+.cityscape-bg {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 45vh;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.032;
+}
+
+.cityscape-bg svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Subtle top vignette */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 200px;
+  background: linear-gradient(180deg, var(--snow) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─── MAIN CONTAINER ─── */
+.app {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+/* ─── HEADER / PUBLISHER BRANDING ─── */
+.publisher-bar {
+  text-align: center;
+  margin-bottom: 8px;
+  padding-bottom: 10px;
+}
+
+.publisher-name {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: var(--gold);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--silver);
+}
+
+.header-rule {
+  width: 48px;
+  height: 1.5px;
+  background: var(--gold);
+  margin: 0 auto 20px;
+}
+
+header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 4.5vw, 2.3rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--obsidian);
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+header h1 em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--navy);
+}
+
+.header-subtitle {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: var(--graphite);
+  letter-spacing: 0.01em;
+}
+
+.header-edition {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 4px 16px;
+  border: 1px solid var(--gold-border);
+  border-radius: 2px;
+  font-family: var(--font-body);
+  font-size: 0.66rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--gold);
+  background: var(--gold-soft);
+}
+
+/* ─── STATS ROW ─── */
+.stats-row {
+  display: flex;
+  gap: 1px;
+  background: var(--silver);
+  border: 1px solid var(--silver);
+  border-radius: var(--radius);
+  margin-bottom: 28px;
+  overflow: hidden;
+}
+
+.stat-cell {
+  flex: 1;
+  background: var(--white);
+  text-align: center;
+  padding: 14px 8px;
+}
+
+.stat-cell .stat-label {
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--slate);
+  margin-bottom: 4px;
+}
+
+.stat-cell .stat-value {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--obsidian);
+}
+
+.stat-cell.gold .stat-value { color: var(--gold); }
+.stat-cell.navy .stat-value { color: var(--navy); }
+
+/* ─── PROGRESS BAR ─── */
+.progress-container {
+  margin-bottom: 28px;
+}
+
+.progress-track {
+  height: 2px;
+  background: var(--pearl);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--navy), var(--navy-deep));
+  border-radius: 2px;
+  transition: width 0.5s var(--transition);
+}
+
+/* ─── FLASHCARD ─── */
+.card-container {
+  perspective: 1400px;
+  margin-bottom: 28px;
+}
+
+.card-flipper {
+  position: relative;
+  width: 100%;
+  min-height: 340px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card-flipper.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: auto;
+}
+
+/* FRONT */
+.card-front {
+  background: var(--white);
+  border: 1px solid var(--silver);
+  box-shadow: var(--shadow-card);
+  padding: 36px 32px 28px;
+}
+
+.card-front:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.card-front .card-tag {
+  display: inline-block;
+  padding: 3px 12px;
+  border: 1px solid var(--gold-border);
+  border-radius: 2px;
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  background: var(--gold-soft);
+  margin-bottom: 20px;
+}
+
+.card-front .card-question {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--obsidian);
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.card-front .card-hint {
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--mist);
+  letter-spacing: 0.04em;
+  margin-top: 20px;
+}
+
+/* BACK */
+.card-back {
+  background: var(--navy-deep);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: var(--shadow-card);
+  padding: 36px 32px 28px;
+  transform: rotateY(180deg);
+}
+
+.card-back .card-tag {
+  display: inline-block;
+  padding: 3px 12px;
+  border: 1px solid rgba(212,168,67,0.3);
+  border-radius: 2px;
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold-light);
+  background: rgba(184,134,11,0.1);
+  margin-bottom: 20px;
+}
+
+.card-back .card-answer {
+  font-family: var(--font-body);
+  font-size: clamp(0.92rem, 2.2vw, 1.02rem);
+  font-weight: 400;
+  line-height: 1.72;
+  color: rgba(255,255,255,0.92);
+  flex-grow: 1;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 2px;
+}
+
+.card-back .card-hint {
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.04em;
+  margin-top: 20px;
+}
+
+/* ─── CONTROLS ─── */
+.controls-main {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 22px;
+  border-radius: var(--radius);
+  border: 1px solid var(--silver);
+  background: var(--white);
+  color: var(--charcoal);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+  user-select: none;
+  letter-spacing: 0.01em;
+}
+
+.btn:hover {
+  background: var(--pearl);
+  border-color: var(--mist);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn svg {
+  width: 16px; height: 16px;
+  stroke-width: 2.2;
+}
+
+.btn-know {
+  background: var(--navy-deep);
+  border-color: var(--navy-deep);
+  color: #fff;
+}
+.btn-know:hover {
+  background: var(--navy);
+  border-color: var(--navy);
+}
+
+.btn-review {
+  background: var(--white);
+  border-color: var(--charcoal);
+  color: var(--charcoal);
+}
+.btn-review:hover {
+  background: var(--pearl);
+}
+
+.controls-secondary {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.btn-sm {
+  padding: 7px 16px;
+  font-size: 0.74rem;
+}
+
+/* ─── KEYBOARD HINTS ─── */
+.keyboard-row {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+
+.key-hint {
+  font-size: 0.68rem;
+  color: var(--slate);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px; height: 20px;
+  padding: 0 5px;
+  border-radius: 3px;
+  background: var(--pearl);
+  border: 1px solid var(--silver);
+  font-family: var(--font-body);
+  font-size: 0.64rem;
+  font-weight: 600;
+  color: var(--graphite);
+}
+
+/* ─── DIVIDER ─── */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 8px 0 24px;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--silver);
+}
+
+.section-divider span {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--slate);
+  white-space: nowrap;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  text-align: center;
+  padding: 24px 0 0;
+  border-top: 1px solid var(--silver);
+}
+
+.footer-logo {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.footer-note {
+  font-size: 0.76rem;
+  color: var(--slate);
+  line-height: 1.6;
+}
+
+.footer-disclaimer {
+  font-size: 0.68rem;
+  color: var(--mist);
+  margin-top: 8px;
+  font-style: italic;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 600px) {
+  .app { padding: 24px 14px 60px; }
+  .card-face { padding: 28px 22px 24px !important; }
+  .controls-main { flex-wrap: wrap; }
+  .btn { padding: 9px 16px; font-size: 0.78rem; }
+  .keyboard-row { display: none; }
+  .stats-row { flex-wrap: wrap; }
+  .stat-cell { min-width: calc(50% - 1px); }
+  header { margin-bottom: 28px; padding-bottom: 24px; }
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  animation: fadeUp 0.5s ease-out both;
+}
+
+.fade-up-d1 { animation-delay: 0.05s; }
+.fade-up-d2 { animation-delay: 0.1s; }
+.fade-up-d3 { animation-delay: 0.15s; }
+.fade-up-d4 { animation-delay: 0.2s; }
+</style>
+</head>
+<body>
+
+<!-- CITYSCAPE BACKGROUND -->
+<div class="cityscape-bg">
+<svg viewBox="0 0 1440 500" preserveAspectRatio="xMidYMax slice" fill="var(--obsidian)">
+  <!-- Far skyline -->
+  <rect x="40" y="160" width="38" height="340" rx="1"/>
+  <rect x="82" y="200" width="28" height="300" rx="1"/>
+  <rect x="114" y="140" width="44" height="360" rx="1"/>
+  <rect x="114" y="140" width="44" height="8" rx="1" fill-opacity="0.5"/>
+  <rect x="162" y="220" width="32" height="280" rx="1"/>
+  <rect x="198" y="100" width="50" height="400" rx="1"/>
+  <rect x="198" y="100" width="50" height="10" rx="1" fill-opacity="0.5"/>
+  <!-- Antenna -->
+  <rect x="220" y="60" width="3" height="40"/>
+  <rect x="252" y="180" width="36" height="320" rx="1"/>
+  <rect x="292" y="250" width="24" height="250" rx="1"/>
+  <rect x="320" y="120" width="55" height="380" rx="1"/>
+  <rect x="320" y="120" width="55" height="8" fill-opacity="0.5"/>
+  <rect x="345" y="80" width="3" height="40"/>
+  <rect x="379" y="200" width="30" height="300" rx="1"/>
+  <rect x="413" y="160" width="42" height="340" rx="1"/>
+  <rect x="459" y="230" width="28" height="270" rx="1"/>
+  <rect x="491" y="90" width="48" height="410" rx="1"/>
+  <rect x="491" y="90" width="48" height="8" fill-opacity="0.5"/>
+  <rect x="513" y="50" width="3" height="40"/>
+  <rect x="543" y="190" width="34" height="310" rx="1"/>
+  <rect x="581" y="260" width="22" height="240" rx="1"/>
+  <rect x="607" y="150" width="46" height="350" rx="1"/>
+  <rect x="607" y="150" width="46" height="8" fill-opacity="0.5"/>
+  <rect x="657" y="210" width="30" height="290" rx="1"/>
+  <rect x="691" y="130" width="52" height="370" rx="1"/>
+  <rect x="691" y="130" width="52" height="8" fill-opacity="0.5"/>
+  <rect x="715" y="90" width="3" height="40"/>
+  <rect x="747" y="240" width="26" height="260" rx="1"/>
+  <rect x="777" y="170" width="40" height="330" rx="1"/>
+  <rect x="821" y="200" width="32" height="300" rx="1"/>
+  <rect x="857" y="110" width="50" height="390" rx="1"/>
+  <rect x="857" y="110" width="50" height="8" fill-opacity="0.5"/>
+  <rect x="880" y="70" width="3" height="40"/>
+  <rect x="911" y="220" width="28" height="280" rx="1"/>
+  <rect x="943" y="180" width="38" height="320" rx="1"/>
+  <rect x="985" y="250" width="24" height="250" rx="1"/>
+  <rect x="1013" y="140" width="48" height="360" rx="1"/>
+  <rect x="1013" y="140" width="48" height="8" fill-opacity="0.5"/>
+  <rect x="1035" y="100" width="3" height="40"/>
+  <rect x="1065" y="200" width="34" height="300" rx="1"/>
+  <rect x="1103" y="160" width="42" height="340" rx="1"/>
+  <rect x="1149" y="230" width="26" height="270" rx="1"/>
+  <rect x="1179" y="100" width="54" height="400" rx="1"/>
+  <rect x="1179" y="100" width="54" height="8" fill-opacity="0.5"/>
+  <rect x="1204" y="60" width="3" height="40"/>
+  <rect x="1237" y="190" width="30" height="310" rx="1"/>
+  <rect x="1271" y="220" width="36" height="280" rx="1"/>
+  <rect x="1311" y="170" width="44" height="330" rx="1"/>
+  <rect x="1359" y="240" width="28" height="260" rx="1"/>
+  <rect x="1391" y="200" width="49" height="300" rx="1"/>
+  <!-- Window grid overlays (tiny rectangles on buildings) -->
+  <g fill="var(--snow)" fill-opacity="0.15">
+    <rect x="204" y="115" width="6" height="4" rx="0.5"/>
+    <rect x="216" y="115" width="6" height="4" rx="0.5"/>
+    <rect x="228" y="115" width="6" height="4" rx="0.5"/>
+    <rect x="204" y="130" width="6" height="4" rx="0.5"/>
+    <rect x="216" y="130" width="6" height="4" rx="0.5"/>
+    <rect x="228" y="130" width="6" height="4" rx="0.5"/>
+    <rect x="204" y="145" width="6" height="4" rx="0.5"/>
+    <rect x="216" y="145" width="6" height="4" rx="0.5"/>
+    <rect x="228" y="145" width="6" height="4" rx="0.5"/>
+    <rect x="326" y="135" width="6" height="4" rx="0.5"/>
+    <rect x="340" y="135" width="6" height="4" rx="0.5"/>
+    <rect x="354" y="135" width="6" height="4" rx="0.5"/>
+    <rect x="326" y="150" width="6" height="4" rx="0.5"/>
+    <rect x="340" y="150" width="6" height="4" rx="0.5"/>
+    <rect x="354" y="150" width="6" height="4" rx="0.5"/>
+    <rect x="497" y="105" width="6" height="4" rx="0.5"/>
+    <rect x="511" y="105" width="6" height="4" rx="0.5"/>
+    <rect x="525" y="105" width="6" height="4" rx="0.5"/>
+    <rect x="497" y="120" width="6" height="4" rx="0.5"/>
+    <rect x="511" y="120" width="6" height="4" rx="0.5"/>
+    <rect x="525" y="120" width="6" height="4" rx="0.5"/>
+    <rect x="697" y="145" width="6" height="4" rx="0.5"/>
+    <rect x="711" y="145" width="6" height="4" rx="0.5"/>
+    <rect x="725" y="145" width="6" height="4" rx="0.5"/>
+    <rect x="697" y="160" width="6" height="4" rx="0.5"/>
+    <rect x="711" y="160" width="6" height="4" rx="0.5"/>
+    <rect x="725" y="160" width="6" height="4" rx="0.5"/>
+    <rect x="863" y="125" width="6" height="4" rx="0.5"/>
+    <rect x="877" y="125" width="6" height="4" rx="0.5"/>
+    <rect x="891" y="125" width="6" height="4" rx="0.5"/>
+    <rect x="863" y="140" width="6" height="4" rx="0.5"/>
+    <rect x="877" y="140" width="6" height="4" rx="0.5"/>
+    <rect x="891" y="140" width="6" height="4" rx="0.5"/>
+    <rect x="1019" y="155" width="6" height="4" rx="0.5"/>
+    <rect x="1033" y="155" width="6" height="4" rx="0.5"/>
+    <rect x="1047" y="155" width="6" height="4" rx="0.5"/>
+    <rect x="1019" y="170" width="6" height="4" rx="0.5"/>
+    <rect x="1033" y="170" width="6" height="4" rx="0.5"/>
+    <rect x="1047" y="170" width="6" height="4" rx="0.5"/>
+    <rect x="1185" y="115" width="6" height="4" rx="0.5"/>
+    <rect x="1199" y="115" width="6" height="4" rx="0.5"/>
+    <rect x="1213" y="115" width="6" height="4" rx="0.5"/>
+    <rect x="1185" y="130" width="6" height="4" rx="0.5"/>
+    <rect x="1199" y="130" width="6" height="4" rx="0.5"/>
+    <rect x="1213" y="130" width="6" height="4" rx="0.5"/>
+  </g>
+</svg>
+</div>
+
+<div class="app">
+
+  <!-- PUBLISHER -->
+  <div class="publisher-bar fade-up">
+    <div class="publisher-name">CertPath Publications</div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="fade-up fade-up-d1">
+    <div class="header-rule"></div>
+    <h1>Real Estate Exam <em>Flashcards</em></h1>
+    <p class="header-subtitle">National Real Estate License Exam Mastery</p>
+    <div class="header-edition">Master Edition — Verified &amp; Corrected</div>
+  </header>
+
+  <!-- STATS -->
+  <div class="stats-row fade-up fade-up-d2">
+    <div class="stat-cell navy">
+      <div class="stat-label">Card</div>
+      <div class="stat-value"><span id="currentNum">1</span> / <span id="totalNum">0</span></div>
+    </div>
+    <div class="stat-cell gold">
+      <div class="stat-label">Mastered</div>
+      <div class="stat-value" id="masteredNum">0</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-label">To Review</div>
+      <div class="stat-value" id="reviewNum">0</div>
+    </div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress-container fade-up fade-up-d3">
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill" style="width:0%"></div>
+    </div>
+  </div>
+
+  <!-- FLASHCARD -->
+  <div class="card-container fade-up fade-up-d4">
+    <div class="card-flipper" id="cardFlipper" onclick="flipCard()">
+      <div class="card-face card-front">
+        <div>
+          <span class="card-tag" id="frontTag"></span>
+          <div class="card-question" id="frontQuestion"></div>
+        </div>
+        <div class="card-hint">Tap to reveal answer</div>
+      </div>
+      <div class="card-face card-back">
+        <div>
+          <span class="card-tag">Answer</span>
+          <div class="card-answer" id="backAnswer"></div>
+        </div>
+        <div class="card-hint">Tap to see question</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTROLS -->
+  <div class="controls-main">
+    <button class="btn" onclick="prevCard()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M15 18l-6-6 6-6"/></svg>
+      Prev
+    </button>
+    <button class="btn btn-review" onclick="markReview()">✗ Review</button>
+    <button class="btn btn-know" onclick="markMastered()">✓ Mastered</button>
+    <button class="btn" onclick="nextCard()">
+      Next
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </div>
+
+  <div class="controls-secondary">
+    <button class="btn btn-sm" onclick="shuffleCards()">⟳ Shuffle</button>
+    <button class="btn btn-sm" onclick="resetCards()">↺ Reset</button>
+  </div>
+
+  <!-- KEYBOARD -->
+  <div class="keyboard-row">
+    <span class="key-hint"><kbd>←</kbd> Previous</span>
+    <span class="key-hint"><kbd>Space</kbd> Flip</span>
+    <span class="key-hint"><kbd>→</kbd> Next</span>
+    <span class="key-hint"><kbd>1</kbd> Review</span>
+    <span class="key-hint"><kbd>2</kbd> Mastered</span>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">CertPath Publications</div>
+    <p class="footer-note">Verified against current U.S. federal real estate law &amp; national exam standards.</p>
+    <p class="footer-disclaimer">State-specific laws may vary. Always consult your state's licensing requirements.</p>
+  </footer>
+
+</div>
+
+<script>
+// ═══════════════════════════════════════
+// FLASHCARD DATA — ALL CATEGORIES MIXED
+// ═══════════════════════════════════════
+const flashcards=[
+{c:"Fiduciary Duties",q:"What are the 6 fiduciary duties an agent owes to their client?",a:"OLDCAR: Obedience, Loyalty, Disclosure, Confidentiality, Accounting, Reasonable Care & Diligence. These duties require an agent to act solely in the client's best interest at all times."},
+{c:"Agency Relationships",q:"What is dual agency?",a:"When a single agent (or brokerage) represents both buyer and seller in the same transaction. Requires informed, written consent from both parties. Illegal in some states (e.g., Alaska, Colorado, Florida, Kansas, Maryland, Texas, Vermont, Wyoming)."},
+{c:"Contracts",q:"What are the 4 essential elements of a valid contract?",a:"1. Competent parties (legal age, sound mind)\n2. Legal purpose (lawful objective)\n3. Mutual consent / meeting of the minds (offer & acceptance)\n4. Consideration (something of value exchanged)"},
+{c:"Property Rights",q:"What is the difference between real property and personal property?",a:"Real property: Land and anything permanently attached (buildings, fixtures, improvements).\nPersonal property (chattel): Movable items not permanently attached to the land.\nThe key test is whether the item is permanently affixed."},
+{c:"Financing",q:"What is LTV (Loan-to-Value) ratio?",a:"The ratio of the loan amount to the appraised value or purchase price (whichever is lower).\nFormula: (Loan Amount ÷ Property Value) × 100\nExample: $180,000 loan on $200,000 home = 90% LTV.\nHigher LTV = more risk for lender."},
+{c:"Fair Housing",q:"What are the 7 protected classes under the Federal Fair Housing Act?",a:"1. Race\n2. Color\n3. Religion\n4. National Origin\n5. Sex (includes gender identity & sexual orientation per HUD)\n6. Disability (Handicap)\n7. Familial Status (families with children under 18, pregnant women)\nNote: States/localities may add additional protected classes."},
+{c:"License Law",q:"What is the difference between a salesperson and a broker?",a:"A salesperson must work under a broker's supervision and cannot operate independently. A broker can work independently, own a brokerage, supervise salespersons, and has additional education/experience requirements. Only brokers can hold escrow/trust funds."},
+{c:"Listing Agreements",q:"What is an exclusive right to sell listing?",a:"A listing agreement where the broker earns a commission regardless of who finds the buyer — even if the seller finds the buyer independently. This provides the greatest protection for the broker and is the most common type of listing agreement."},
+{c:"Appraisal",q:"What are the 3 approaches to value in appraisal?",a:"1. Sales Comparison Approach — compares to recent comparable sales (most common for residential)\n2. Cost Approach — land value + replacement cost − depreciation (best for new/unique properties)\n3. Income Approach — based on income potential using cap rate (used for investment properties)"},
+{c:"Deeds",q:"What type of deed provides the greatest protection to the buyer?",a:"General Warranty Deed — provides the most comprehensive protection through covenants: seisin, right to convey, against encumbrances, quiet enjoyment, warranty forever, and further assurance. The grantor guarantees clear title against all claims, past and present."},
+{c:"Ownership",q:"What is the difference between joint tenancy and tenancy in common?",a:"Joint tenancy: Includes right of survivorship; requires the 4 unities (PITT) — Possession, Interest, Time, Title. All owners hold equal shares.\n\nTenancy in common: No right of survivorship (interest passes to heirs). Owners can hold unequal shares. Only unity of possession required."},
+{c:"Disclosures",q:"What material defects must be disclosed to buyers?",a:"Any known defect that would materially affect a buyer's decision to purchase or the price they would pay. Examples: structural issues, water damage, mold, environmental hazards (lead, asbestos, radon), boundary disputes, zoning violations. Both seller and agent have disclosure obligations."},
+{c:"Escrow",q:"What is earnest money?",a:"A good-faith deposit made by the buyer to demonstrate serious intent to purchase. Held in a trust/escrow account (never commingled with personal funds). Typically applied toward the down payment or closing costs at closing. Amount is negotiable."},
+{c:"Zoning",q:"What is a variance?",a:"An exception granted by local zoning authorities allowing a property use that would otherwise be prohibited under current zoning regulations. Requires application and typically a showing of hardship. A variance runs with the land, not the owner."},
+{c:"Title",q:"What is title insurance and why is it important?",a:"Insurance protecting against financial loss from defects in title not discovered during the title search.\nTwo types: Owner's policy (protects buyer) and Lender's policy (protects mortgagee).\nCovers claims, liens, encumbrances, forgery, recording errors, and undisclosed heirs."},
+{c:"Calculations",q:"How do you calculate annual property tax?",a:"Assessed Value × Tax Rate (mill rate) = Annual Property Tax\n1 mill = $1 per $1,000 of assessed value = 0.001\nExample: $200,000 assessed value × 25 mills = $200,000 × 0.025 = $5,000/year\nNote: Assessed value may differ from market value."},
+{c:"Market Analysis",q:"What is a CMA (Comparative Market Analysis)?",a:"An analysis prepared by a real estate agent (NOT an appraisal) using recently sold, pending, and active listings of comparable properties to estimate market value for pricing purposes. A CMA is not a formal appraisal and cannot be called one."},
+{c:"Ethics",q:"What is puffing in real estate?",a:"Exaggerated statements of opinion not made as representations of fact.\nExample: 'This is the best neighborhood in town.'\nGenerally legal, unlike fraud (intentional misrepresentation of material fact) or negligent misrepresentation. The line can be thin."},
+{c:"Leases",q:"What is a gross lease vs. a net lease?",a:"Gross (Full-Service) Lease: Tenant pays fixed rent; landlord pays all operating expenses.\n\nNet Lease types:\n• Single Net (N): Tenant pays rent + property taxes\n• Double Net (NN): + insurance\n• Triple Net (NNN): + maintenance/repairs\nNNN is most common in commercial real estate."},
+{c:"Agency",q:"What are the ways an agency relationship can be terminated?",a:"1. Completion/Performance\n2. Expiration of the term\n3. Mutual agreement\n4. Revocation by the principal\n5. Renunciation by the agent\n6. Death or incapacity of either party\n7. Bankruptcy of either party\n8. Destruction of the property\n9. By operation of law"},
+{c:"Settlement",q:"What is the Closing Disclosure (CD)?",a:"A 5-page form (replacing the HUD-1 since Oct 2015 under TRID rules) that itemizes all final loan terms, closing costs, credits and debits for both buyer and seller.\nMust be provided to the borrower at least 3 BUSINESS days before closing.\nReplaces both the old HUD-1 and final Truth in Lending disclosure."},
+{c:"Property Management",q:"What is the difference between a property manager and a real estate agent?",a:"Property managers oversee day-to-day operations of rental properties (tenant relations, maintenance, rent collection). In most states, managing properties for others for compensation requires a real estate or property management license. Agents focus on buying/selling transactions."},
+{c:"Environmental",q:"What is the lead-based paint disclosure requirement?",a:"Federal law (Residential Lead-Based Paint Hazard Reduction Act of 1992) requires: For homes built before 1978, sellers/landlords must disclose known lead-based paint hazards, provide an EPA pamphlet, and allow buyers a 10-day inspection period. This is a federal requirement — no exceptions."},
+{c:"Land Measurement",q:"How many square feet are in one acre?",a:"43,560 square feet = 1 acre.\nOther key conversions:\n• 1 section = 640 acres = 1 square mile\n• 1 township = 36 sections\n• A lot that is 100' × 435.6' = 1 acre"},
+{c:"Liens",q:"What is the difference between a general lien and a specific lien?",a:"General lien: Attaches to ALL property owned by the debtor. Examples: judgment liens, IRS tax liens, estate/inheritance tax liens.\n\nSpecific lien: Attaches to ONE particular property only. Examples: mortgage, property tax lien, mechanic's lien, special assessment."},
+{c:"Transfer of Title",q:"What is voluntary vs. involuntary alienation?",a:"Voluntary: Transfer by owner's choice — sale, gift, dedication, will (devise).\n\nInvoluntary: Transfer without owner's consent — foreclosure, eminent domain (condemnation), adverse possession, escheat (property goes to the state when owner dies without heirs)."},
+{c:"Mortgage Types",q:"What is an FHA loan?",a:"A loan INSURED (not made) by the Federal Housing Administration.\nKey features:\n• Down payment as low as 3.5%\n• More flexible credit requirements\n• Requires MIP (Mortgage Insurance Premium) — upfront and annual\n• Property must meet FHA minimum standards\n• Loan limits vary by county"},
+{c:"RESPA",q:"What is RESPA and what does it require?",a:"Real Estate Settlement Procedures Act — a federal law requiring:\n1. Loan Estimate within 3 BUSINESS days of application\n2. Closing Disclosure at least 3 BUSINESS days before closing\n3. Prohibits kickbacks and referral fees between settlement service providers\n4. Limits escrow account deposits"},
+{c:"Property Description",q:"What are the three methods of legal property description?",a:"1. Metes and Bounds — compass directions and distances from a point of beginning (POB)\n2. Rectangular (Government) Survey System — principal meridians, baselines, townships, ranges, sections\n3. Lot and Block (Recorded Plat) — references recorded subdivision plat maps"},
+{c:"Adverse Possession",q:"What are the requirements for adverse possession?",a:"OCEAN:\nO — Open and Notorious (visible, obvious)\nC — Continuous (uninterrupted for the statutory period)\nE — Exclusive (not shared with the true owner)\nA — Actual (physical use/possession of the property)\nN — Non-permissive / Hostile (without owner's consent)\nStatutory period: typically 5–21 years depending on state."},
+{c:"Depreciation",q:"What are the three types of depreciation in appraisal?",a:"1. Physical deterioration — wear and tear (curable or incurable)\n2. Functional obsolescence — outdated design, poor layout (curable or incurable)\n3. External (Economic) obsolescence — caused by factors OUTSIDE the property (location, environmental, economic). Always incurable."},
+{c:"Truth in Lending",q:"What is the APR (Annual Percentage Rate)?",a:"The true total cost of credit as a yearly rate, including interest, points, mortgage insurance, and certain other loan costs. Required disclosure under TILA (Truth in Lending Act / Regulation Z). Allows borrowers to compare the true cost of different loan offers."},
+{c:"Commission",q:"How is real estate commission structured?",a:"Commission is always negotiable — there is no standard or fixed rate (antitrust law prohibits rate-fixing). Following the 2024 NAR settlement, buyer-broker compensation must be negotiated independently via written buyer agreements. Sellers are no longer required to offer compensation to buyer brokers through the MLS."},
+{c:"Antitrust",q:"What are three antitrust violations in real estate?",a:"1. Price fixing — competitors agreeing on commission rates or fees\n2. Group boycotting — competitors refusing to work with certain parties\n3. Market allocation — competitors dividing territories/markets\nViolations of the Sherman Antitrust Act can result in fines up to $100M for corporations and imprisonment."},
+{c:"Easements",q:"What is an easement appurtenant vs. easement in gross?",a:"Easement Appurtenant: Benefits an adjacent property (dominant estate) and burdens the other (servient estate). Runs with the land.\n\nEasement in Gross: Benefits a person or entity, not a specific parcel. Example: utility company easement. No dominant estate required."},
+{c:"Homestead",q:"What is a homestead exemption?",a:"Legal protection shielding a portion of a primary residence's value from certain creditors (not mortgage lenders) and may reduce property taxes. Varies by state — Florida and Texas offer unlimited homestead exemptions on property value; other states have specific dollar caps."},
+{c:"Sales Comparison",q:"How do you adjust comparables in the sales comparison approach?",a:"Adjustments are always made TO THE COMPARABLE, never to the subject.\n\nCBS rule:\n• Comparable Better → Subtract (reduce comp's price)\n• Comparable Inferior → Add (increase comp's price)\nGoal: Make the comparable 'equal' to the subject through adjustments."},
+{c:"Loan Programs",q:"What is a VA loan?",a:"A loan GUARANTEED (not insured) by the Dept. of Veterans Affairs for eligible veterans, active-duty military, and qualifying surviving spouses.\n• No down payment required (100% financing)\n• No PMI/mortgage insurance\n• Funding fee required (may be financed)\n• Must be owner-occupied primary residence"},
+{c:"Closing Costs",q:"What items are typically prorated at closing?",a:"Items prorated (split between buyer/seller based on closing date):\n• Property taxes\n• HOA dues\n• Rent (if tenant-occupied)\n• Prepaid interest\n• Insurance premiums\n• Utility bills\nCalculation uses 360-day (banker's year) or 365-day method per contract."},
+{c:"Advertising",q:"What must be included in all real estate advertising?",a:"The broker's licensed name (or firm name) must be prominently displayed. Advertising in the salesperson's name only is generally prohibited. The Equal Housing Opportunity logo/statement should be included. All ads must comply with Fair Housing and Truth in Lending (Reg Z) requirements."},
+{c:"PMI",q:"What is PMI and when is it required?",a:"Private Mortgage Insurance — required when down payment is less than 20% on CONVENTIONAL loans (LTV > 80%). Protects the LENDER (not borrower) in case of default. Can be removed at 20% equity (78% LTV under Homeowners Protection Act). Not the same as FHA's MIP."},
+{c:"Statute of Frauds",q:"What does the Statute of Frauds require?",a:"Certain contracts must be in WRITING and signed to be enforceable:\n• Real estate sales contracts\n• Leases exceeding one year\n• Agreements not performable within one year\n• Listing agreements (in most states)\nNote: Does NOT require notarization or recording to be valid."},
+{c:"Capitalization Rate",q:"How do you calculate cap rate?",a:"Cap Rate = NOI ÷ Property Value (or Sale Price)\nAlso: Value = NOI ÷ Cap Rate (Income Approach)\nNOI = Value × Cap Rate\n\nHigher cap rate = higher risk/return. Used in the Income Approach to estimate investment property value."},
+{c:"Fair Housing",q:"What is blockbusting and why is it illegal?",a:"Blockbusting (panic peddling): Inducing homeowners to sell by suggesting members of a protected class are moving in and property values will decline. Prohibited under the Federal Fair Housing Act. Can result in fines, license revocation, and civil lawsuits."},
+{c:"Subordination",q:"What is a subordination agreement?",a:"A legal agreement where a lienholder (typically a second mortgage/HELOC lender) agrees to MAINTAIN a lower priority position so that a NEW first mortgage (from a refinance) can take first lien position. Necessary because when the original first mortgage is paid off during refinance, the second lien would otherwise move to first position."},
+{c:"Trust Accounts",q:"What is commingling and why is it prohibited?",a:"Commingling: Mixing client/trust funds with personal or business operating funds. STRICTLY prohibited — can result in license suspension/revocation. All client funds must be held in a separate trust/escrow account.\nRelated violation: Conversion = unauthorized USE of client funds."},
+{c:"Contingencies",q:"What are the most common contingencies in purchase contracts?",a:"1. Financing/mortgage contingency\n2. Home inspection contingency\n3. Appraisal contingency — property must appraise at/above purchase price\n4. Sale of buyer's current home\n5. Title contingency — clear title required\nContingencies protect the buyer's earnest money if conditions aren't met."},
+{c:"NOI Calculation",q:"How do you calculate Net Operating Income (NOI)?",a:"Potential Gross Income (PGI)\n− Vacancy & Collection Losses\n= Effective Gross Income (EGI)\n− Operating Expenses\n= Net Operating Income (NOI)\n\nDo NOT deduct debt service (mortgage), income taxes, or depreciation — these are NOT operating expenses."},
+{c:"Eminent Domain",q:"What is eminent domain?",a:"The government's constitutional power (5th Amendment) to take private property for PUBLIC USE, provided JUST COMPENSATION is paid. The legal process is called condemnation. The owner can challenge compensation but generally cannot prevent the taking if it serves a legitimate public purpose."},
+{c:"Fair Housing",q:"What is steering and why is it illegal?",a:"Steering: The illegal practice of directing buyers to or away from certain neighborhoods based on race, color, religion, national origin, sex, disability, or familial status. Violates the Federal Fair Housing Act. Includes only showing listings in certain areas or discouraging buyers from viewing homes in specific neighborhoods."},
+{c:"Fair Housing",q:"What is redlining?",a:"The illegal practice of refusing financial services (mortgages, insurance) or varying terms for properties in certain neighborhoods based on racial or ethnic composition. Prohibited under the Fair Housing Act, ECOA, and Community Reinvestment Act."}
+];
+
+// ═══════════════════════════════
+// STATE & LOGIC
+// ═══════════════════════════════
+let currentIndex = 0;
+let cards = [...flashcards];
+let isFlipped = false;
+let mastered = new Set();
+let reviewSet = new Set();
+
+function renderCard() {
+  if (!cards.length) return;
+  const c = cards[currentIndex];
+  document.getElementById('frontTag').textContent = c.c;
+  document.getElementById('frontQuestion').textContent = c.q;
+  document.getElementById('backAnswer').innerHTML = c.a.replace(/\n/g,'<br>');
+  document.getElementById('cardFlipper').classList.toggle('flipped', isFlipped);
+  document.getElementById('currentNum').textContent = currentIndex + 1;
+  document.getElementById('totalNum').textContent = cards.length;
+  document.getElementById('masteredNum').textContent = mastered.size;
+  document.getElementById('reviewNum').textContent = reviewSet.size;
+  document.getElementById('progressFill').style.width = ((currentIndex+1)/cards.length*100)+'%';
+}
+
+function flipCard(){
+  isFlipped=!isFlipped;
+  document.getElementById('cardFlipper').classList.toggle('flipped',isFlipped);
+}
+
+function nextCard(){
+  isFlipped=false;
+  currentIndex=(currentIndex+1)%cards.length;
+  renderCard();
+}
+
+function prevCard(){
+  isFlipped=false;
+  currentIndex=(currentIndex-1+cards.length)%cards.length;
+  renderCard();
+}
+
+function markMastered(){
+  mastered.add(cards[currentIndex].q);
+  reviewSet.delete(cards[currentIndex].q);
+  nextCard();
+}
+
+function markReview(){
+  reviewSet.add(cards[currentIndex].q);
+  mastered.delete(cards[currentIndex].q);
+  nextCard();
+}
+
+function shuffleCards(){
+  for(let i=cards.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [cards[i],cards[j]]=[cards[j],cards[i]];
+  }
+  currentIndex=0; isFlipped=false; renderCard();
+}
+
+function resetCards(){
+  cards=[...flashcards];
+  currentIndex=0; isFlipped=false;
+  mastered.clear(); reviewSet.clear();
+  renderCard();
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight')nextCard();
+  else if(e.key==='ArrowLeft')prevCard();
+  else if(e.key===' '){e.preventDefault();flipCard();}
+  else if(e.key==='1')markReview();
+  else if(e.key==='2')markMastered();
+});
+
+renderCard();
+</script>
+</body>
+</html>
