@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Exclusive Bonus Portal – National Real Estate License Exam Mastery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            min-height: 100vh;
+            background: 
+                linear-gradient(rgba(38, 70, 83, 0.82), rgba(38, 70, 83, 0.82)),
+                url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80') center/cover fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .portal-wrapper {
+            max-width: 620px;
+            width: 100%;
+            text-align: center;
+            color: white;
+        }
+
+        /* ── TITLE ── */
+        .portal-title {
+            font-size: clamp(2.2rem, 7vw, 3.4rem);
+            font-weight: 900;
+            font-family: 'Arial Black', 'Arial', sans-serif;
+            text-transform: uppercase;
+            line-height: 1.15;
+            margin-bottom: 28px;
+            letter-spacing: -0.5px;
+            text-shadow: 2px 3px 8px rgba(0,0,0,0.5);
+        }
+
+        /* ── SUBTITLE ── */
+        .portal-subtitle {
+            font-size: clamp(1.15rem, 3.5vw, 1.5rem);
+            font-weight: 400;
+            margin-bottom: 36px;
+            opacity: 0.97;
+            line-height: 1.5;
+            font-family: 'Georgia', serif;
+        }
+
+        /* ── DIVIDER ── */
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 10px 0 28px;
+            opacity: 0.65;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: white;
+            max-width: 120px;
+        }
+
+        .divider-icon {
+            font-size: 1.1rem;
+            color: white;
+        }
+
+        /* ── RESOURCE BLOCK ── */
+        .resource-block {
+            margin-bottom: 36px;
+        }
+
+        .resource-label {
+            font-size: clamp(1.15rem, 3.5vw, 1.5rem);
+            font-weight: 500;
+            margin-bottom: 6px;
+            font-family: 'Georgia', serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .resource-label .icon {
+            font-size: 1.3rem;
+        }
+
+        .resource-options {
+            font-size: clamp(1rem, 2.8vw, 1.2rem);
+            margin-bottom: 18px;
+            opacity: 0.95;
+            line-height: 1.8;
+            font-family: 'Georgia', serif;
+        }
+
+        /* ── BUTTONS ── */
+        .btn-green {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            text-decoration: none;
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            font-weight: 700;
+            font-family: 'Arial', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 16px 48px;
+            border-radius: 6px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.35);
+            border-bottom: 4px solid #1e7e34;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn-green:hover {
+            background: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 24px rgba(0,0,0,0.4);
+        }
+
+        .btn-green:active {
+            transform: translateY(1px);
+            border-bottom-width: 2px;
+        }
+
+        /* ── LOGO ── */
+        .logo-block {
+            margin-top: 48px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+        }
+
+        .logo-container {
+            background: #1a2332;
+            border-radius: 14px;
+            padding: 22px 36px 18px;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+        }
+
+        .logo-text {
+            font-family: 'Arial Black', 'Arial', sans-serif;
+            font-size: clamp(1.6rem, 5vw, 2.1rem);
+            font-weight: 900;
+            color: white;
+            line-height: 1.15;
+            text-align: left;
+        }
+
+        .logo-house {
+            font-size: clamp(2.4rem, 7vw, 3rem);
+        }
+
+        /* ── MOBILE ── */
+        @media (max-width: 480px) {
+            body {
+                background-attachment: scroll;
+                padding: 30px 15px;
+            }
+
+            .btn-green {
+                width: 100%;
+                max-width: 360px;
+                padding: 16px 24px;
+            }
+
+            .logo-container {
+                padding: 18px 24px 15px;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="portal-wrapper">
+
+        <!-- TITLE -->
+        <h1 class="portal-title">Your Exclusive<br>Bonus Portal</h1>
+
+        <!-- SUBTITLE -->
+        <p class="portal-subtitle">Welcome! Here are all your free study<br>resources.</p>
+
+        <!-- DIVIDER -->
+        <div class="divider">
+            <span class="divider-icon">◆ ✦ ◆</span>
+        </div>
+
+        <!-- RESOURCE 1: PRACTICE TEST -->
+        <div class="resource-block">
+            <p class="resource-label">
+                <span class="icon">📝</span> Practice Test Simulators
+            </p>
+            <p class="resource-options">
+                [50-Question Timed Exam ]<br>
+                [100-Question Full-Length Exam ]
+            </p>
+            <a href="https://oshapublishing.github.io/national-real-estate/" 
+               class="btn-green" 
+               target="_blank" 
+               rel="noopener noreferrer">
+                START PRACTICE TEST
+            </a>
+        </div>
+
+        <!-- DIVIDER -->
+        <div class="divider">
+            <span class="divider-icon">◆ ✦ ◆</span>
+        </div>
+
+        <!-- RESOURCE 2: AUDIOBOOK -->
+        <div class="resource-block">
+            <p class="resource-label">Audio Book Lessons</p>
+            <br>
+            <a href="https://drive.google.com/drive/folders/1lBI7dAwnhr3hJRR_C7xOV8k5cvtQ0w2F?usp=sharing" 
+               class="btn-green" 
+               target="_blank" 
+               rel="noopener noreferrer">
+                LISTEN NOW
+            </a>
+        </div>
+
+        <!-- DIVIDER -->
+        <div class="divider">
+            <span class="divider-icon">◆ ✦ ◆</span>
+        </div>
+
+        <!-- LOGO -->
+        <div class="logo-block">
+            <div class="logo-container">
+                <div class="logo-text">CertPath<br>Publications</div>
+                <div class="logo-house">🏠</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
